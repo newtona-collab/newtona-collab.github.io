@@ -18,7 +18,7 @@ html { scroll-behavior: smooth; }
 body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
 a { color: inherit; text-decoration: none; }
 .nav { display:flex; justify-content:space-between; align-items:center; padding:22px clamp(20px,6vw,88px); max-width:1440px; margin:auto; }
-.logo { font-weight:850; letter-spacing:-.05em; font-size:3.0rem; }
+.logo { font-weight:850; letter-spacing:-.05em; font-size:1.2rem; }
 .logo span { color:var(--site-primary); }
 .navlinks { display:flex; gap:22px; align-items:center; color:#51635f; font-size:.92rem; }
 .navlinks a:hover { color:var(--site-primary); }
@@ -88,11 +88,112 @@ footer { max-width:1260px; margin:auto; padding:25px clamp(20px,6vw,88px); displ
   .contact-box { align-items:flex-start; flex-direction:column; }
   footer { flex-direction:column; }
 }
+
+/* High-energy motion while preserving the original green-and-white design */
+html { scroll-behavior: smooth; }
+body { overflow-x: hidden; }
+.nav { animation: navDrop .8s cubic-bezier(.2,.8,.2,1) both; }
+.hero > div:first-child { animation: heroSlide .95s .08s cubic-bezier(.16,1,.3,1) both; }
+.eyebrow { animation: eyebrowPulse 2.6s 1s ease-in-out infinite; }
+.hero-card {
+  position: relative;
+  animation: cardSlide .95s .18s cubic-bezier(.16,1,.3,1) both, cardBob 3.6s 1.2s ease-in-out infinite;
+  transform-origin: center;
+}
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 1px solid #46a98e55;
+  border-radius: 30px;
+  pointer-events: none;
+  animation: cardHalo 3.2s ease-in-out infinite;
+}
+.avatar { transition: transform .3s ease, box-shadow .3s ease; }
+.hero-card:hover .avatar { transform: rotate(-8deg) scale(1.09); box-shadow: 0 10px 25px #176b6633; }
+.tag-row { perspective: 700px; }
+.tag {
+  position: relative;
+  animation: tagDance 3.8s ease-in-out infinite;
+  transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+.tag:nth-child(2n) { animation-delay: -.7s; }
+.tag:nth-child(3n) { animation-delay: -1.4s; }
+.tag:nth-child(4n) { animation-delay: -2.1s; }
+.tag:hover { transform: translateY(-6px) rotate(-2deg) scale(1.06); background: #d3eae3; box-shadow: 0 8px 20px #176b6628; animation-play-state: paused; }
+.btn { transition: transform .2s ease, box-shadow .2s ease; }
+.btn:hover { transform: translateY(-4px) scale(1.025); box-shadow: 0 12px 26px #176b6626; }
+.navlinks a { transition: color .2s ease, transform .2s ease; }
+.navlinks a:hover { transform: translateY(-2px); }
+.skill, .project {
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+.skill:hover, .project:hover {
+  transform: translateY(-8px) scale(1.012);
+  box-shadow: 0 18px 38px #17252216;
+  border-color: #9ccfc1;
+}
+.reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(32px) scale(.985);
+  transition: opacity .75s ease, transform .75s cubic-bezier(.2,.75,.25,1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-ready .reveal.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+.reveal-ready .reveal-item {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .55s ease, transform .55s ease;
+}
+.reveal-ready .reveal.is-visible .reveal-item { opacity: 1; transform: translateY(0); }
+.typing-line { min-height: 1.8em; margin-top: 13px; color: var(--site-primary); font-weight: 750; letter-spacing: .01em; }
+.typing-line .cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 3px;
+  vertical-align: -.12em;
+  background: currentColor;
+  animation: cursorBlink .8s steps(2, start) infinite;
+}
+.contact-box { position: relative; overflow: hidden; }
+.contact-box::after {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border: 1px solid #ffffff26;
+  border-radius: 50%;
+  right: -70px;
+  bottom: -100px;
+  pointer-events: none;
+  animation: orbitRing 7s linear infinite;
+}
+@keyframes navDrop { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes heroSlide { from { opacity: 0; transform: translateX(-34px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes cardSlide { from { opacity: 0; transform: translateX(32px) scale(.96); } to { opacity: 1; transform: translateX(0) scale(1); } }
+@keyframes cardBob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -11px; } }
+@keyframes eyebrowPulse { 0%, 100% { filter: saturate(1); } 50% { filter: saturate(1.5); } }
+@keyframes cardHalo { 0%, 100% { opacity: .25; transform: scale(1); } 50% { opacity: .8; transform: scale(1.012); } }
+@keyframes tagDance { 0%, 100% { translate: 0 0; rotate: 0deg; } 25% { translate: 0 -3px; rotate: .5deg; } 75% { translate: 0 2px; rotate: -.4deg; } }
+@keyframes cursorBlink { to { visibility: hidden; } }
+@keyframes orbitRing { from { transform: rotate(0deg) scale(.85); } to { transform: rotate(360deg) scale(1.12); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal-ready .reveal, .reveal-ready .reveal-item { opacity: 1; transform: none; }
+  .typing-line .cursor { animation: none; }
+}
+
 </style>
 </head>
 <body>
 <nav class="nav">
-<a class="logo" href="#home">Newton</a>
+  <a class="logo" href="#home">Newton</a>
   <div class="navlinks">
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
@@ -106,9 +207,10 @@ footer { max-width:1260px; margin:auto; padding:25px clamp(20px,6vw,88px); displ
 <main>
 <section class="hero" id="home">
   <div>
-<div class="eyebrow"><span class="dot"></span> Software Test Engineer &middot; Chennai, India</div>
+    <div class="eyebrow"><span class="dot"></span> Software Test Engineer &middot; Chennai, India</div>
     <h1>Building quality.<br><em>Breaking bugs.</em></h1>
-    <p class="lead">Hi, I'm Newton — a Manual &amp; Automation Test Engineer with 2+ years of experience testing enterprise web and mobile applications. I focus on reliable releases through structured test coverage, Playwright automation, API validation, and clear defect reporting.</p>
+    <p class="lead">Hi, I'm Newton â€” a Manual &amp; Automation Test Engineer with 2+ years of experience testing enterprise web and mobile applications. I focus on reliable releases through structured test coverage, Playwright automation, API validation, and clear defect reporting.</p>
+    <p class="typing-line" aria-label="Testing skills"><span id="typing-text"></span><span class="cursor" aria-hidden="true"></span></p>
     <div class="actions">
       <a class="btn primary" href="#projects">Explore my work &#8595;</a>
       <a class="btn" href="#contact">Contact me</a>
@@ -123,20 +225,11 @@ footer { max-width:1260px; margin:auto; padding:25px clamp(20px,6vw,88px); displ
       <div class="stat"><strong>Web + API</strong><span>Testing coverage</span></div>
       <div class="stat"><strong>POM</strong><span>Automation structure</span></div>
     </div>
-<div class="tag-row">
-  <span class="tag">Playwright</span>
-  <span class="tag">JavaScript</span>
-  <span class="tag">POM</span>
-  <span class="tag">Claude + MCP</span>
-  <span class="tag">Postman</span>
-  <span class="tag">JIRA</span>
-  <span class="tag">SQL</span>
-  <span class="tag">CI/CD</span>
-  <span class="tag">VS Code</span>
-</div>
+    <div class="tag-row"><span class="tag">Playwright</span><span class="tag">JavaScript</span><span class="tag">POM</span><span class="tag">Claude + MCP</span><span class="tag">Postman</span><span class="tag">JIRA</span><span class="tag">SQL</span><span class="tag">CI/CD</span><span class="tag">VS Code</span></div>
   </aside>
 </section>
-<section class="section alt" id="about">
+
+<section class="section alt reveal" id="about">
   <div class="section-inner">
     <div class="section-kicker">A little about me</div>
     <h2>Curious by nature.<br>Careful by profession.</h2>
@@ -144,7 +237,7 @@ footer { max-width:1260px; margin:auto; padding:25px clamp(20px,6vw,88px); displ
   </div>
 </section>
 
-<section class="section" id="skills">
+<section class="section reveal" id="skills">
   <div class="section-inner">
     <div class="section-kicker">What I bring</div>
     <h2>Skills &amp; toolkit</h2>
@@ -159,7 +252,7 @@ footer { max-width:1260px; margin:auto; padding:25px clamp(20px,6vw,88px); displ
   </div>
 </section>
 
-<section class="section alt" id="projects">
+<section class="section alt reveal" id="projects">
   <div class="section-inner">
     <div class="section-kicker">Selected work</div>
     <h2>Projects I've tested</h2>
@@ -194,7 +287,7 @@ footer { max-width:1260px; margin:auto; padding:25px clamp(20px,6vw,88px); displ
   </div>
 </section>
 
-<section class="section" id="experience">
+<section class="section reveal" id="experience">
   <div class="section-inner">
     <div class="section-kicker">Career path</div>
     <h2>Experience</h2>
@@ -217,7 +310,7 @@ footer { max-width:1260px; margin:auto; padding:25px clamp(20px,6vw,88px); displ
   </div>
 </section>
 
-<section class="section alt" id="education">
+<section class="section alt reveal" id="education">
   <div class="section-inner">
     <div class="section-kicker">Learning &amp; credentials</div>
     <h2>Education &amp; certifications</h2>
@@ -228,7 +321,7 @@ footer { max-width:1260px; margin:auto; padding:25px clamp(20px,6vw,88px); displ
   </div>
 </section>
 
-<section class="section alt" id="contact">
+<section class="section alt reveal" id="contact">
   <div class="section-inner">
     <div class="contact-box">
       <div><div class="section-kicker" style="color:#bce5d9">Let's talk</div><h2>Have a quality challenge in mind?</h2><p>Chennai, Tamil Nadu &middot; <a href="tel:+917397080763">7397080763</a> &middot; <a href="mailto:newton.a.job@gmail.com">newton.a.job@gmail.com</a></p><p><a href="https://www.linkedin.com/in/a-newton712" target="_blank" rel="noopener noreferrer">Connect with me on LinkedIn &#8599;</a></p></div>
@@ -241,6 +334,63 @@ footer { max-width:1260px; margin:auto; padding:25px clamp(20px,6vw,88px); displ
 <footer><span>&copy; <span id="year"></span> Newton A &middot; Software Test Engineer</span><span>Made with care and a quality-first mindset.</span></footer>
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// Dynamic typing effect: cycles through QA skills.
+const typingTarget = document.getElementById("typing-text");
+const typingPhrases = [
+  "Manual Testing",
+  "Playwright Automation",
+  "API Testing with Postman",
+  "CI/CD & Quality Engineering",
+  "Web and Mobile Testing"
+];
+if (typingTarget) {
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function typeNext() {
+    const phrase = typingPhrases[phraseIndex];
+    typingTarget.textContent = phrase.slice(0, charIndex);
+
+    if (!deleting && charIndex < phrase.length) {
+      charIndex++;
+      setTimeout(typeNext, 78);
+    } else if (!deleting) {
+      deleting = true;
+      setTimeout(typeNext, 1250);
+    } else if (charIndex > 0) {
+      charIndex--;
+      setTimeout(typeNext, 38);
+    } else {
+      deleting = false;
+      phraseIndex = (phraseIndex + 1) % typingPhrases.length;
+      setTimeout(typeNext, 250);
+    }
+  }
+  typeNext();
+}
+
+// Reveal sections as they enter the viewport.
+document.documentElement.classList.add("reveal-ready");
+const revealItems = document.querySelectorAll(".reveal");
+revealItems.forEach((item, index) => {
+  item.style.setProperty("--reveal-delay", `${Math.min(index * 55, 220)}ms`);
+});
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+  revealItems.forEach((item) => revealObserver.observe(item));
+} else {
+  revealItems.forEach((item) => item.classList.add("is-visible"));
+}
+
 </script>
 </body>
 </html>
