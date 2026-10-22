@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newton A | Software Test Engineer</title>
+<style>
+:root {
+  --site-primary: #176b66;
+  --site-secondary: #e2f0ed;
+  --site-background: #f7f8f5;
+  --site-on-primary: #ffffff;
+  --site-on-secondary: #173c3a;
+  --site-on-background: #172522;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
+#app { min-height: 100vh; background-color: var(--site-background); color: var(--site-on-background); border-radius: 0; overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+.nav { display:flex; justify-content:space-between; align-items:center; padding: 22px clamp(20px, 6vw, 88px); max-width: 1440px; margin:auto; }
+.logo { font-weight: 850; letter-spacing:-.05em; font-size: 1.2rem; }
+.logo span { color: var(--site-primary); }
+.navlinks { display:flex; gap:28px; align-items:center; color:#51635f; font-size:.92rem; }
+.navlinks a:hover { color:var(--site-primary); }
+.nav-cta { background:var(--site-primary); color:white; border-radius:999px; padding:11px 18px; font-weight:700; }
+.hero { max-width: 1280px; margin:auto; padding: clamp(54px, 9vw, 120px) clamp(20px, 6vw, 88px) 90px; display:grid; grid-template-columns: 1.25fr .75fr; gap:70px; align-items:center; }
+.eyebrow { display:inline-flex; gap:9px; align-items:center; font-size:.8rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--site-primary); }
+.dot { width:8px; height:8px; background:#46a98e; border-radius:50%; box-shadow:0 0 0 5px #46a98e22; }
+h1 { font-family:var(--site-font-heading); font-size:calc(clamp(3.2rem, 7.3vw, 6.6rem) * var(--site-heading-scale)); letter-spacing:-.075em; line-height:.98; margin:24px 0; max-width:800px; }
+h1 em { color:var(--site-primary); font-style:normal; }
+.lead { font-size:clamp(1rem, 1.4vw, 1.18rem); color:#586964; line-height:1.8; max-width:620px; }
+.actions { display:flex; gap:13px; flex-wrap:wrap; margin-top:30px; }
+.btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 20px; border-radius:999px; font-weight:750; border:1px solid #d4dfdb; transition:transform .2s, background .2s; }
+.btn:hover { transform:translateY(-2px); }
+.btn.primary { background:var(--site-primary); color:#fff; border-color:var(--site-primary); }
+.btn.secondary { background:transparent; }
+.hero-card { background:var(--site-secondary); border:1px solid #d2e6e0; border-radius:calc(28px * var(--site-radius-scale)); padding:30px; position:relative; }
+.hero-card:before { content:""; position:absolute; width:130px; height:130px; border-radius:50%; background:#b6dcd2; opacity:var(--site-decoration-opacity); right:-22px; top:-28px; z-index:0; }
+.profile-top { display:flex; align-items:center; gap:15px; position:relative; }
+.avatar { width:58px; height:58px; border-radius:18px; display:grid; place-items:center; background:var(--site-primary); color:white; font-weight:900; font-size:1.3rem; }
+.profile-top h3 { margin:0 0 5px; font-size:1.05rem; }
+.profile-top p { margin:0; color:#56716b; font-size:.87rem; }
+.card-line { height:1px; background:#c8dfd8; margin:24px 0; }
+.stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; position:relative; }
+.stat { padding:17px; background:#ffffffa6; border-radius:16px; }
+.stat strong { display:block; font-size:1.55rem; letter-spacing:-.04em; color:#174d48; }
+.stat span { font-size:.82rem; color:#59716b; }
+.tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; position:relative; }
+.tag { padding:8px 11px; border-radius:999px; background:#fff; color:#285a53; font-size:.78rem; font-weight:700; }
+.section { padding:82px clamp(20px, 6vw, 88px); }
+.section.alt { background:#eef3ef; }
+.section-inner { max-width:1260px; margin:auto; }
+.section-kicker { color:var(--site-primary); font-size:.78rem; font-weight:850; letter-spacing:.15em; text-transform:uppercase; }
+h2 { font-size:calc(clamp(2rem, 4vw, 3.5rem) * var(--site-heading-scale)); letter-spacing:-.06em; line-height:1.08; margin:13px 0 18px; }
+.section-intro { color:#61716c; max-width:650px; line-height:1.75; }
+.skills { display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; margin-top:34px; }
+.skill { padding:23px; background:light-dark(#ffffff,#1d2926); border:1px solid #dce5e0; border-radius:calc(18px * var(--site-radius-scale)); }
+.skill .icon { font-size:1.45rem; margin-bottom:17px; }
+.skill h3 { margin:0 0 9px; font-size:1rem; }
+.skill p { margin:0; color:#697872; font-size:.88rem; line-height:1.65; }
+.project-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; margin-top:34px; }
+.project { background:light-dark(#fff,#1d2926); border:1px solid #dce5e0; border-radius:calc(22px * var(--site-radius-scale)); padding:28px; }
+.project-head { display:flex; justify-content:space-between; align-items:flex-start; gap:15px; }
+.project-type { color:var(--site-primary); font-size:.75rem; font-weight:850; text-transform:uppercase; letter-spacing:.1em; }
+.project h3 { font-size:1.35rem; margin:10px 0; letter-spacing:-.03em; }
+.project p { color:#63716d; line-height:1.7; font-size:.92rem; }
+.pill { background:var(--site-secondary); color:#285a53; border-radius:999px; padding:7px 10px; font-size:.72rem; font-weight:800; white-space:nowrap; }
+.project ul { padding-left:19px; color:#50635d; line-height:1.9; font-size:.9rem; }
+.timeline { margin-top:35px; display:grid; grid-template-columns:190px 1fr; gap:25px; padding:26px 0; border-top:1px solid #d6e0db; }
+.timeline .date { font-weight:800; color:var(--site-primary); }
+.timeline h3 { margin:0 0 7px; }
+.timeline p { color:#63716d; line-height:1.7; margin:0; }
+.contact-box { background:var(--site-primary); color:white; padding:clamp(28px, 5vw, 58px); border-radius:calc(28px * var(--site-radius-scale)); display:flex; justify-content:space-between; gap:30px; align-items:center; }
+.contact-box h2 { max-width:650px; margin-top:0; }
+.contact-box p { color:#d5e9e5; line-height:1.7; }
+.contact-box .btn { background:white; color:#174d48; border-color:white; white-space:nowrap; }
+footer { max-width:1260px; margin:auto; padding:25px clamp(20px, 6vw, 88px); display:flex; justify-content:space-between; gap:15px; color:#73817c; font-size:.82rem; }
+.mobile-menu { display:none; }
+@media (max-width:850px) {
+  .hero { grid-template-columns:1fr; gap:38px; padding-top:58px; }
+  .hero-card { max-width:550px; }
+  .skills { grid-template-columns:repeat(2,1fr); }
+  .navlinks { gap:15px; }
+}
+@media (max-width:580px) {
+  .nav { padding-top:18px; padding-bottom:18px; }
+  .navlinks a:not(.nav-cta) { display:none; }
+  .nav-cta { padding:9px 13px; font-size:.82rem; }
+  .hero { padding-bottom:58px; }
+  .skills, .project-grid { grid-template-columns:1fr; }
+  .timeline { grid-template-columns:1fr; gap:9px; }
+  .contact-box { align-items:flex-start; flex-direction:column; }
+  footer { flex-direction:column; }
+}
+@media (prefers-color-scheme: dark) {
+  body { background:#101916; color:#eef5f1; }
+  .lead,.section-intro,.project p,.project ul,.skill p,.timeline p { color:#aabbb4; }
+  .navlinks { color:#b2c3bc; }
+  .hero-card { border-color:#2c4b44; }
+  .card-line,.timeline { border-color:#355048; }
+  .stat { background:#1b3831; }
+  .stat strong { color:#d5eee5; }
+  .stat span,.profile-top p { color:#abc7bc; }
+  .tag { background:#23483e; color:#d9eee7; }
+  .skill,.project { border-color:#30443d; }
+  .section.alt { background:#17221e; }
+  .pill { background:#24473e; color:#d9eee7; }
+  footer { color:#9aaca4; }
+}
+</style>
+</head>
+<body>
+<div id="app" data-sites-preview-theme="custom">
+  <nav class="nav">
+    <a class="logo" href="#home">Newton<span>.</span></a>
+    <div class="navlinks">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a>
+      <a class="nav-cta" href="#contact">Let's connect ↗</a>
+    </div>
+  </nav>
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Software Test Engineer · Chennai, India</div>
+        <h1>Building quality.<br><em>Breaking bugs.</em></h1>
+        <p class="lead">Hi, I'm Newton — a Software Test Engineer focused on reliable user experiences through manual testing, API validation, and browser automation with Playwright.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore my work ↘</a>
+          <a class="btn secondary" href="#contact">Contact me</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="profile-top">
+          <div class="avatar">NA</div>
+          <div><h3>Newton A</h3><p>Software Test Engineer</p></div>
+        </div>
+        <div class="card-line"></div>
+        <div class="stat-grid">
+          <div class="stat"><strong>2+</strong><span>Years of experience</span></div>
+          <div class="stat"><strong>QA</strong><span>Quality-first mindset</span></div>
+          <div class="stat"><strong>Web + API</strong><span>Testing coverage</span></div>
+          <div class="stat"><strong>POM</strong><span>Automation structure</span></div>
+        </div>
+        <div class="tag-row"><span class="tag">Playwright</span><span class="tag">TypeScript / JavaScript</span><span class="tag">Postman</span><span class="tag">Manual QA</span></div>
+      </aside>
+    </section>
+
+    <section class="section alt" id="about">
+      <div class="section-inner">
+        <div class="section-kicker">A little about me</div>
+        <h2>Curious by nature.<br>Careful by profession.</h2>
+        <p class="section-intro">I test from the user's point of view, look for edge cases, and communicate issues clearly so teams can ship with confidence. My experience includes product and service applications across HRMS, quick commerce, CRM, payroll, insurance, and service platforms.</p>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-inner">
+        <div class="section-kicker">What I bring</div>
+        <h2>Skills & toolkit</h2>
+        <p class="section-intro">A practical mix of exploratory thinking, structured test coverage, and automation fundamentals.</p>
+        <div class="skills">
+          <article class="skill"><div class="icon">⌕</div><h3>Manual Testing</h3><p>Functional, regression, integration, UAT, UI validation, cross-browser checks, and bug lifecycle.</p></article>
+          <article class="skill"><div class="icon">⌘</div><h3>Browser Automation</h3><p>Playwright with JavaScript/TypeScript, Page Object Model, reusable test structure, and browser checks.</p></article>
+          <article class="skill"><div class="icon">⇄</div><h3>API Testing</h3><p>Postman collections, request and response validation, status codes, and negative scenarios.</p></article>
+          <article class="skill"><div class="icon">▤</div><h3>QA Workflow</h3><p>STLC, SDLC, Agile/Scrum, test case design, defect reporting, and basic SQL.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="projects">
+      <div class="section-inner">
+        <div class="section-kicker">Selected work</div>
+        <h2>Projects I've tested</h2>
+        <p class="section-intro">Examples of application areas and testing responsibilities. Replace or expand these summaries with public-safe project details.</p>
+        <div class="project-grid">
+          <article class="project">
+            <div class="project-head"><div><div class="project-type">Desktop / Web</div><h3>Windows Closure Application</h3></div><span class="pill">Automation + Manual</span></div>
+            <p>Supported sprint-based quality checks for a closure application, validating new features and investigating reported defects.</p>
+            <ul><li>Functional and regression test coverage</li><li>Playwright automation using a POM approach</li><li>Defect tracking and retesting</li></ul>
+          </article>
+          <article class="project">
+            <div class="project-head"><div><div class="project-type">HR Technology</div><h3>HRMS Platform</h3></div><span class="pill">Manual QA</span></div>
+            <p>Validated key employee and HR workflows across onboarding, payroll, attendance, and leave management.</p>
+            <ul><li>Created and executed 100+ test cases</li><li>Checked web and mobile flows</li><li>Reported issues and verified fixes</li></ul>
+          </article>
+          <article class="project">
+            <div class="project-head"><div><div class="project-type">Quick Commerce</div><h3>Multi-role Mobile Apps</h3></div><span class="pill">Web + Mobile</span></div>
+            <p>Tested workflows across customer, shop owner, delivery partner, field officer, and admin roles.</p>
+            <ul><li>UI and functional validation</li><li>Registration and login scenarios</li><li>Blocker identification and clear bug reports</li></ul>
+          </article>
+          <article class="project">
+            <div class="project-head"><div><div class="project-type">Business Applications</div><h3>CRM, CTS & Insurance</h3></div><span class="pill">Functional QA</span></div>
+            <p>Tested business workflows in service, insurance, inventory, volunteering, payment, and complaint management modules.</p>
+            <ul><li>Test scenario and test case preparation</li><li>Regression and integration checks</li><li>Release readiness and QA status updates</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-inner">
+        <div class="section-kicker">Career path</div>
+        <h2>Experience</h2>
+        <div class="timeline">
+          <div class="date">Jul 2024 — Present</div>
+          <div><h3>Software Tester · Keel Info Solutions</h3><p>Perform manual and automation testing across business applications. Prepare test cases, execute regression checks, validate APIs, document defects, and collaborate with developers and stakeholders on fixes and release quality.</p></div>
+        </div>
+        <div class="timeline">
+          <div class="date">Earlier experience</div>
+          <div><h3>Software Testing · Multiple domains</h3><p>Worked across product and service applications, supporting functional validation, defect reporting, retesting, and sprint-based delivery. Add previous employer names and dates here if you want them displayed publicly.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="contact">
+      <div class="section-inner">
+        <div class="contact-box">
+          <div><div class="section-kicker" style="color:#bce5d9">Let's talk</div><h2>Have a quality challenge in mind?</h2><p>I'm happy to connect about software testing, QA collaboration, and automation.</p></div>
+          <a class="btn" href="mailto:your.email@example.com" id="emailLink">Email me ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><span>© <span id="year"></span> Newton A · Software Test Engineer</span><span>Made with care and a quality-first mindset.</span></footer>
+</div>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+// Personalise this email address before publishing.
+</script>
+</body>
+</html>
