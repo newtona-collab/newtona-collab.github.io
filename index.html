@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,268 +10,228 @@
   --site-primary: #176b66;
   --site-secondary: #e2f0ed;
   --site-background: #f7f8f5;
-  --site-on-primary: #ffffff;
-  --site-on-secondary: #173c3a;
   --site-on-background: #172522;
   --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --site-heading-scale: 1;
-  --site-spacing-scale: 1;
-  --site-radius-scale: 1;
-  --site-decoration-opacity: 1;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); }
-#app { min-height: 100vh; background-color: var(--site-background); color: var(--site-on-background); border-radius: 0; overflow: hidden; }
 a { color: inherit; text-decoration: none; }
-button { font: inherit; cursor: pointer; }
-.nav { display:flex; justify-content:space-between; align-items:center; padding: 22px clamp(20px, 6vw, 88px); max-width: 1440px; margin:auto; }
-.logo { font-weight: 850; letter-spacing:-.05em; font-size: 1.2rem; }
-.logo span { color: var(--site-primary); }
-.navlinks { display:flex; gap:28px; align-items:center; color:#51635f; font-size:.92rem; }
+.nav { display:flex; justify-content:space-between; align-items:center; padding:22px clamp(20px,6vw,88px); max-width:1440px; margin:auto; }
+.logo { font-weight:850; letter-spacing:-.05em; font-size:1.2rem; }
+.logo span { color:var(--site-primary); }
+.navlinks { display:flex; gap:22px; align-items:center; color:#51635f; font-size:.92rem; }
 .navlinks a:hover { color:var(--site-primary); }
 .nav-cta { background:var(--site-primary); color:white; border-radius:999px; padding:11px 18px; font-weight:700; }
-.hero { max-width: 1280px; margin:auto; padding: clamp(54px, 9vw, 120px) clamp(20px, 6vw, 88px) 90px; display:grid; grid-template-columns: 1.25fr .75fr; gap:70px; align-items:center; }
+.hero { max-width:1280px; margin:auto; padding:clamp(54px,9vw,120px) clamp(20px,6vw,88px) 90px; display:grid; grid-template-columns:1.25fr .75fr; gap:70px; align-items:center; }
 .eyebrow { display:inline-flex; gap:9px; align-items:center; font-size:.8rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--site-primary); }
 .dot { width:8px; height:8px; background:#46a98e; border-radius:50%; box-shadow:0 0 0 5px #46a98e22; }
-h1 { font-family:var(--site-font-heading); font-size:calc(clamp(3.2rem, 7.3vw, 6.6rem) * var(--site-heading-scale)); letter-spacing:-.075em; line-height:.98; margin:24px 0; max-width:800px; }
+h1 { font-size:clamp(3.2rem,7.3vw,6.6rem); letter-spacing:-.075em; line-height:.98; margin:24px 0; max-width:800px; }
 h1 em { color:var(--site-primary); font-style:normal; }
-.lead { font-size:clamp(1rem, 1.4vw, 1.18rem); color:#586964; line-height:1.8; max-width:620px; }
+.lead { font-size:clamp(1rem,1.4vw,1.18rem); color:#586964; line-height:1.8; max-width:620px; }
 .actions { display:flex; gap:13px; flex-wrap:wrap; margin-top:30px; }
-.btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 20px; border-radius:999px; font-weight:750; border:1px solid #d4dfdb; transition:transform .2s, background .2s; }
-.btn:hover { transform:translateY(-2px); }
+.btn { display:inline-flex; align-items:center; justify-content:center; padding:14px 20px; border-radius:999px; font-weight:750; border:1px solid #d4dfdb; }
 .btn.primary { background:var(--site-primary); color:#fff; border-color:var(--site-primary); }
-.btn.secondary { background:transparent; }
-.hero-card { background:var(--site-secondary); border:1px solid #d2e6e0; border-radius:calc(28px * var(--site-radius-scale)); padding:30px; position:relative; }
-.hero-card:before { content:""; position:absolute; width:130px; height:130px; border-radius:50%; background:#b6dcd2; opacity:var(--site-decoration-opacity); right:-22px; top:-28px; z-index:0; }
-.profile-top { display:flex; align-items:center; gap:15px; position:relative; }
+.hero-card { background:var(--site-secondary); border:1px solid #d2e6e0; border-radius:28px; padding:30px; }
+.profile-top { display:flex; align-items:center; gap:15px; }
 .avatar { width:58px; height:58px; border-radius:18px; display:grid; place-items:center; background:var(--site-primary); color:white; font-weight:900; font-size:1.3rem; }
-.profile-top h3 { margin:0 0 5px; font-size:1.05rem; }
+.profile-top h3 { margin:0 0 5px; }
 .profile-top p { margin:0; color:#56716b; font-size:.87rem; }
 .card-line { height:1px; background:#c8dfd8; margin:24px 0; }
-.stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; position:relative; }
+.stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
 .stat { padding:17px; background:#ffffffa6; border-radius:16px; }
-.stat strong { display:block; font-size:1.55rem; letter-spacing:-.04em; color:#174d48; }
+.stat strong { display:block; font-size:1.55rem; color:#174d48; }
 .stat span { font-size:.82rem; color:#59716b; }
-.tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; position:relative; }
+.tag-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:22px; }
 .tag { padding:8px 11px; border-radius:999px; background:#fff; color:#285a53; font-size:.78rem; font-weight:700; }
-.section { padding:82px clamp(20px, 6vw, 88px); }
+.section { padding:82px clamp(20px,6vw,88px); }
 .section.alt { background:#eef3ef; }
 .section-inner { max-width:1260px; margin:auto; }
 .section-kicker { color:var(--site-primary); font-size:.78rem; font-weight:850; letter-spacing:.15em; text-transform:uppercase; }
-h2 { font-size:calc(clamp(2rem, 4vw, 3.5rem) * var(--site-heading-scale)); letter-spacing:-.06em; line-height:1.08; margin:13px 0 18px; }
+h2 { font-size:clamp(2rem,4vw,3.5rem); letter-spacing:-.06em; line-height:1.08; margin:13px 0 18px; }
 .section-intro { color:#61716c; max-width:650px; line-height:1.75; }
-.skills { display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; margin-top:34px; }
-.skill { padding:23px; background:light-dark(#ffffff,#1d2926); border:1px solid #dce5e0; border-radius:calc(18px * var(--site-radius-scale)); }
-.skill .icon { font-size:1.45rem; margin-bottom:17px; }
+.skills { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:34px; }
+.skill { padding:23px; background:#fff; border:1px solid #dce5e0; border-radius:18px; }
+.skill .icon { font-size:1.45rem; margin-bottom:17px; color:var(--site-primary); }
 .skill h3 { margin:0 0 9px; font-size:1rem; }
 .skill p { margin:0; color:#697872; font-size:.88rem; line-height:1.65; }
-.project-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; margin-top:34px; }
-.project { background:light-dark(#fff,#1d2926); border:1px solid #dce5e0; border-radius:calc(22px * var(--site-radius-scale)); padding:28px; }
+.project-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:34px; }
+.project { background:#fff; border:1px solid #dce5e0; border-radius:22px; padding:28px; }
 .project-head { display:flex; justify-content:space-between; align-items:flex-start; gap:15px; }
 .project-type { color:var(--site-primary); font-size:.75rem; font-weight:850; text-transform:uppercase; letter-spacing:.1em; }
-.project h3 { font-size:1.35rem; margin:10px 0; letter-spacing:-.03em; }
+.project h3 { font-size:1.35rem; margin:10px 0; }
 .project p { color:#63716d; line-height:1.7; font-size:.92rem; }
-.pill { background:var(--site-secondary); color:#285a53; border-radius:999px; padding:7px 10px; font-size:.72rem; font-weight:800; white-space:nowrap; }
+.pill { background:var(--site-secondary); color:#285a53; border-radius:999px; padding:7px 10px; font-size:.72rem; font-weight:800; }
 .project ul { padding-left:19px; color:#50635d; line-height:1.9; font-size:.9rem; }
 .timeline { margin-top:35px; display:grid; grid-template-columns:190px 1fr; gap:25px; padding:26px 0; border-top:1px solid #d6e0db; }
 .timeline .date { font-weight:800; color:var(--site-primary); }
 .timeline h3 { margin:0 0 7px; }
 .timeline p { color:#63716d; line-height:1.7; margin:0; }
-.contact-box { background:var(--site-primary); color:white; padding:clamp(28px, 5vw, 58px); border-radius:calc(28px * var(--site-radius-scale)); display:flex; justify-content:space-between; gap:30px; align-items:center; }
+.contact-box { background:var(--site-primary); color:white; padding:clamp(28px,5vw,58px); border-radius:28px; display:flex; justify-content:space-between; gap:30px; align-items:center; }
 .contact-box h2 { max-width:650px; margin-top:0; }
 .contact-box p { color:#d5e9e5; line-height:1.7; }
 .contact-box .btn { background:white; color:#174d48; border-color:white; white-space:nowrap; }
-footer { max-width:1260px; margin:auto; padding:25px clamp(20px, 6vw, 88px); display:flex; justify-content:space-between; gap:15px; color:#73817c; font-size:.82rem; }
-.mobile-menu { display:none; }
-@media (max-width:850px) {
+footer { max-width:1260px; margin:auto; padding:25px clamp(20px,6vw,88px); display:flex; justify-content:space-between; gap:15px; color:#73817c; font-size:.82rem; }
+@media(max-width:850px) {
   .hero { grid-template-columns:1fr; gap:38px; padding-top:58px; }
   .hero-card { max-width:550px; }
   .skills { grid-template-columns:repeat(2,1fr); }
-  .navlinks { gap:15px; }
+  .navlinks { gap:12px; }
 }
-@media (max-width:580px) {
+@media(max-width:580px) {
   .nav { padding-top:18px; padding-bottom:18px; }
   .navlinks a:not(.nav-cta) { display:none; }
   .nav-cta { padding:9px 13px; font-size:.82rem; }
   .hero { padding-bottom:58px; }
-  .skills, .project-grid { grid-template-columns:1fr; }
+  .skills,.project-grid { grid-template-columns:1fr; }
   .timeline { grid-template-columns:1fr; gap:9px; }
   .contact-box { align-items:flex-start; flex-direction:column; }
   footer { flex-direction:column; }
 }
-@media (prefers-color-scheme: dark) {
-  body { background:#101916; color:#eef5f1; }
-  .lead,.section-intro,.project p,.project ul,.skill p,.timeline p { color:#aabbb4; }
-  .navlinks { color:#b2c3bc; }
-  .hero-card { border-color:#2c4b44; }
-  .card-line,.timeline { border-color:#355048; }
-  .stat { background:#1b3831; }
-  .stat strong { color:#d5eee5; }
-  .stat span,.profile-top p { color:#abc7bc; }
-  .tag { background:#23483e; color:#d9eee7; }
-  .skill,.project { border-color:#30443d; }
-  .section.alt { background:#17221e; }
-  .pill { background:#24473e; color:#d9eee7; }
-  footer { color:#9aaca4; }
-}
 </style>
 </head>
 <body>
-<div id="app" data-sites-preview-theme="custom">
-  <nav class="nav">
-    <a class="logo" href="#home">Newton<span>.</span></a>
-    <div class="navlinks">
-      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a>
-      <a class="nav-cta" href="#contact">Let's connect â†—</a>
+<nav class="nav">
+  <a class="logo" href="#home">Newton<span>.</span></a>
+  <div class="navlinks">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a class="nav-cta" href="#contact">Let's connect &#8599;</a>
+  </div>
+</nav>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow"><span class="dot"></span> Software Test Engineer &middot; Chennai, India</div>
+    <h1>Building quality.<br><em>Breaking bugs.</em></h1>
+    <p class="lead">Hi, I'm Newton — a Manual &amp; Automation Test Engineer with 2+ years of experience testing enterprise web and mobile applications. I focus on reliable releases through structured test coverage, Playwright automation, API validation, and clear defect reporting.</p>
+    <div class="actions">
+      <a class="btn primary" href="#projects">Explore my work &#8595;</a>
+      <a class="btn" href="#contact">Contact me</a>
     </div>
-  </nav>
-  <main>
-    <section class="hero" id="home">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> Software Test Engineer Â· Chennai, India</div>
-        <h1>Building quality.<br><em>Breaking bugs.</em></h1>
-        <p class="lead">Hi, I'm Newton â€” a Manual & Automation Test Engineer with 2+ years of experience testing enterprise web and mobile applications. I focus on reliable releases through structured test coverage, Playwright automation, API validation, and clear defect reporting.</p>
-        <div class="actions">
-          <a class="btn primary" href="#projects">Explore my work â†˜</a>
-          <a class="btn secondary" href="#contact">Contact me</a>
-        </div>
-      </div>
-      <aside class="hero-card">
-        <div class="profile-top">
-          <div class="avatar">NA</div>
-          <div><h3>Newton A</h3><p>Software Test Engineer</p></div>
-        </div>
-        <div class="card-line"></div>
-        <div class="stat-grid">
-          <div class="stat"><strong>2+</strong><span>Years of experience</span></div>
-          <div class="stat"><strong>QA</strong><span>Quality-first mindset</span></div>
-          <div class="stat"><strong>Web + API</strong><span>Testing coverage</span></div>
-          <div class="stat"><strong>POM</strong><span>Automation structure</span></div>
-        </div>
-        <div class="tag-row"><span class="tag">Playwright</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">POM</span><span class="tag">Claude + MCP</span><span class="tag">Postman</span><span class="tag">JIRA</span><span class="tag">SQL</span><span class="tag">VS Code</span></div>
-      </aside>
-    </section>
+  </div>
+  <aside class="hero-card">
+    <div class="profile-top"><div class="avatar">NA</div><div><h3>Newton A</h3><p>Software Test Engineer</p></div></div>
+    <div class="card-line"></div>
+    <div class="stat-grid">
+      <div class="stat"><strong>2+</strong><span>Years of experience</span></div>
+      <div class="stat"><strong>QA</strong><span>Quality-first mindset</span></div>
+      <div class="stat"><strong>Web + API</strong><span>Testing coverage</span></div>
+      <div class="stat"><strong>POM</strong><span>Automation structure</span></div>
+    </div>
+    <div class="tag-row"><span class="tag">Playwright</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">POM</span><span class="tag">Claude + MCP</span><span class="tag">Postman</span><span class="tag">JIRA</span><span class="tag">SQL</span><span class="tag">VS Code</span></div>
+  </aside>
+</section>
 
-    <section class="section alt" id="about">
-      <div class="section-inner">
-        <div class="section-kicker">A little about me</div>
-        <h2>Curious by nature.<br>Careful by profession.</h2>
-        <p class="section-intro">Software Test Engineer with 2+ years of experience delivering quality across enterprise web and mobile applications. Experienced in Functional, Regression, Smoke, Sanity, Integration, System, UAT, and End-to-End Testing, with a strong understanding of STLC, SDLC, Agile Scrum, and defect lifecycle management.</p>
-      </div>
-    </section>
+<section class="section alt" id="about">
+  <div class="section-inner">
+    <div class="section-kicker">A little about me</div>
+    <h2>Curious by nature.<br>Careful by profession.</h2>
+    <p class="section-intro">Software Test Engineer with 2+ years of experience delivering quality across enterprise web and mobile applications. Experienced in Functional, Regression, Smoke, Sanity, Integration, System, UAT, and End-to-End Testing, with a strong understanding of STLC, SDLC, Agile Scrum, and defect lifecycle management.</p>
+  </div>
+</section>
 
-    <section class="section" id="skills">
-      <div class="section-inner">
-        <div class="section-kicker">What I bring</div>
-        <h2>Skills & toolkit</h2>
-        <p class="section-intro">A practical mix of exploratory thinking, structured test coverage, and automation fundamentals.</p>
-        <div class="skills">
-          <article class="skill"><div class="icon">âŒ•</div><h3>Manual Testing</h3><p>Functional, Regression, Smoke, Sanity, Integration, System, UAT, and End-to-End testing.</p></article>
-          <article class="skill"><div class="icon">âŒ˜</div><h3>Automation Testing</h3><p>Playwright with JavaScript, TypeScript, Page Object Model (POM), and reusable browser automation scripts.</p></article>
-          <article class="skill"><div class="icon">â‡„</div><h3>API & Database</h3><p>API testing with Postman and application data validation using SQL.</p></article>
-          <article class="skill"><div class="icon">âŒ</div><h3>Claude + MCP</h3><p>Working with Playwright integrated with Claude through MCP for browser automation in a POM-based framework.</p></article>
-          <article class="skill"><div class="icon">â–¤</div><h3>Tools & Process</h3><p>JIRA, VS Code, Agile Scrum, STLC, SDLC, test cases, test scenarios, execution reports, and cross-browser testing.</p></article>
-        </div>
-      </div>
-    </section>
+<section class="section" id="skills">
+  <div class="section-inner">
+    <div class="section-kicker">What I bring</div>
+    <h2>Skills &amp; toolkit</h2>
+    <p class="section-intro">A practical mix of exploratory thinking, structured test coverage, and automation fundamentals.</p>
+    <div class="skills">
+      <article class="skill"><div class="icon">&#10003;</div><h3>Manual Testing</h3><p>Functional, Regression, Smoke, Sanity, Integration, System, UAT, and End-to-End testing.</p></article>
+      <article class="skill"><div class="icon">&#9881;</div><h3>Automation Testing</h3><p>Playwright with JavaScript, TypeScript, Page Object Model (POM), and reusable browser automation scripts.</p></article>
+      <article class="skill"><div class="icon">&#8644;</div><h3>API &amp; Database</h3><p>API testing with Postman and application data validation using SQL.</p></article>
+      <article class="skill"><div class="icon">&#9670;</div><h3>Claude + MCP</h3><p>Working with Playwright integrated with Claude through MCP for browser automation in a POM-based framework.</p></article>
+      <article class="skill"><div class="icon">&#9776;</div><h3>Tools &amp; Process</h3><p>JIRA, VS Code, Agile Scrum, STLC, SDLC, test cases, test scenarios, execution reports, and cross-browser testing.</p></article>
+    </div>
+  </div>
+</section>
 
-    <section class="section alt" id="projects">
-      <div class="section-inner">
-        <div class="section-kicker">Selected work</div>
-        <h2>Projects I've tested</h2>
-        <p class="section-intro">Selected projects and testing responsibilities from my professional experience.</p>
-        <div class="project-grid">
-          <article class="project">
-            <div class="project-head"><div><div class="project-type">ERP / CRM Â· Windows Application</div><h3>Windows Closure Application</h3></div><span class="pill">Manual + Automation</span></div>
-            <p>Testing business workflows and closure processes in an ERP/CRM-based Windows Closure Application.</p>
-            <ul><li>Functional, Regression, Smoke, Sanity, and End-to-End testing</li><li>Playwright integrated with Claude using MCP</li><li>Validated mandatory fields, data, workflow transitions, and closure status updates</li><li>Defect reporting, retesting, and release validation</li></ul>
-          </article>
-          <article class="project">
-            <div class="project-head"><div><div class="project-type">Enterprise Web</div><h3>Enterprise HRMS Application</h3></div><span class="pill">Manual + Automation</span></div>
-            <p>Tested employee and HR workflows across Employee, Payroll, Attendance, and Leave Management modules.</p>
-            <ul><li>Functional, Regression, Integration, UAT, and API testing</li><li>Playwright automation using JavaScript and TypeScript</li><li>Test cases, JIRA defect reporting, and bug-fix verification</li></ul>
-          </article>
-          <article class="project">
-            <div class="project-head"><div><div class="project-type">Employee Tracking</div><h3>Spot My Team</h3></div><span class="pill">Manual QA</span></div>
-            <p>Validated employee tracking, attendance, and GPS location features.</p>
-            <ul><li>Functional, Regression, and UI testing</li><li>Verified real-time location updates and application workflows</li><li>Reported defects and validated fixes</li></ul>
-          </article>
-          <article class="project">
-            <div class="project-head"><div><div class="project-type">US Client</div><h3>Story Buzz</h3></div><span class="pill">Web QA</span></div>
-            <p>Tested content management and publishing features for a US client application.</p>
-            <ul><li>Functional, Regression, and UI testing</li><li>Browser compatibility checks</li><li>Defect reporting and release validation</li></ul>
-          </article>
-          <article class="project">
-            <div class="project-head"><div><div class="project-type">Business Application</div><h3>Cafe in Touch</h3></div><span class="pill">Functional QA</span></div>
-            <p>Tested order management and billing modules to validate key business workflows.</p>
-            <ul><li>Functional and Regression testing</li><li>Test case preparation and workflow validation</li><li>Defect reporting and fix verification before deployment</li></ul>
-          </article>
-        </div>
-      </div>
-    </section>
+<section class="section alt" id="projects">
+  <div class="section-inner">
+    <div class="section-kicker">Selected work</div>
+    <h2>Projects I've tested</h2>
+    <p class="section-intro">Selected projects and testing responsibilities from my professional experience.</p>
+    <div class="project-grid">
+      <article class="project">
+        <div class="project-head"><div><div class="project-type">ERP / CRM &middot; Windows Application</div><h3>Windows Closure Application</h3></div><span class="pill">Manual + Automation</span></div>
+        <p>Testing business workflows and closure processes in an ERP/CRM-based Windows Closure Application.</p>
+        <ul><li>Functional, Regression, Smoke, Sanity, and End-to-End testing</li><li>Playwright integrated with Claude using MCP</li><li>Validated mandatory fields, data, workflow transitions, and closure status updates</li><li>Defect reporting, retesting, and release validation</li></ul>
+      </article>
+      <article class="project">
+        <div class="project-head"><div><div class="project-type">Enterprise Web</div><h3>Enterprise HRMS Application</h3></div><span class="pill">Manual QA</span></div>
+        <p>Tested employee and HR workflows across Employee, Payroll, Attendance, and Leave Management modules.</p>
+        <ul><li>Functional, Regression, Integration, and UAT testing</li><li>Prepared and executed manual test cases for HRMS workflows</li><li>Test case execution, defect reporting, and bug-fix verification</li></ul>
+      </article>
+      <article class="project">
+        <div class="project-head"><div><div class="project-type">Employee Tracking</div><h3>Spot My Team</h3></div><span class="pill">Manual QA</span></div>
+        <p>Validated employee tracking, attendance, and GPS location features.</p>
+        <ul><li>Functional, Regression, and UI testing</li><li>Verified real-time location updates and application workflows</li><li>Reported defects and validated fixes</li></ul>
+      </article>
+      <article class="project">
+        <div class="project-head"><div><div class="project-type">US Client</div><h3>Story Buzz</h3></div><span class="pill">Web QA</span></div>
+        <p>Tested content management and publishing features for a US client application.</p>
+        <ul><li>Functional, Regression, and UI testing</li><li>Browser compatibility checks</li><li>Defect reporting and release validation</li></ul>
+      </article>
+      <article class="project">
+        <div class="project-head"><div><div class="project-type">Business Application</div><h3>Cafe in Touch</h3></div><span class="pill">Functional QA</span></div>
+        <p>Tested order management and billing modules to validate key business workflows.</p>
+        <ul><li>Functional and Regression testing</li><li>Test case preparation and workflow validation</li><li>Defect reporting and fix verification before deployment</li></ul>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <section class="section" id="experience">
-      <div class="section-inner">
-        <div class="section-kicker">Career path</div>
-        <h2>Experience</h2>
-        <div class="timeline">
-          <div class="date">Jul 2026 â€” Present</div>
-          <div><h3>Software Tester Â· Blind Matrix</h3><p>Testing an ERP/CRM-based Windows Closure Application through manual testing, defect validation, and Playwright automation integrated with Claude using MCP. Create and execute test scenarios for business workflows, data validation, UI behavior, mandatory fields, workflow transitions, and closure status updates. Perform Functional, Regression, Smoke, Sanity, and End-to-End testing; track defects, retest fixes, and support release validation.</p></div>
-        </div>
-        <div class="timeline">
-          <div class="date">Jul 2024 â€” Jul 2026</div>
-          <div><h3>Software Tester Â· Keel Info Solutions</h3><p>Performed manual and automation testing for enterprise web applications. Developed Playwright scripts using JavaScript and TypeScript, executed Functional, Regression, Smoke, Sanity, Integration, UAT, and End-to-End tests, tested APIs with Postman, validated data with SQL, tracked defects in JIRA, and supported Agile sprint testing and cross-browser validation.</p></div>
-        </div>
-        <div class="timeline">
-          <div class="date">Current project</div>
-          <div><h3>ERP/CRM â€” Windows Closure Application</h3><p>Work on manual testing and Playwright automation integrated with Claude using MCP. Cover business workflows, data validation, UI behavior, mandatory fields, workflow transitions, closure status, defect retesting, and release validation.</p></div>
-        </div>
-        <div class="timeline">
-          <div class="date">Other projects</div>
-          <div><h3>Enterprise HRMS Â· Spot My Team Â· Story Buzz Â· Cafe in Touch</h3><p>HRMS: Employee, Payroll, Attendance, and Leave Management. Spot My Team: employee tracking, attendance, and GPS location. Story Buzz: content management and publishing for a US client. Cafe in Touch: order management and billing.</p></div>
-        </div>
-      </div>
-    </section>
+<section class="section" id="experience">
+  <div class="section-inner">
+    <div class="section-kicker">Career path</div>
+    <h2>Experience</h2>
+    <div class="timeline">
+      <div class="date">Jul 2026 &mdash; Present</div>
+      <div><h3>Software Tester &middot; Blind Matrix</h3><p>Testing an ERP/CRM-based Windows Closure Application through manual testing, defect validation, and Playwright automation integrated with Claude using MCP. Create and execute test scenarios for business workflows, data validation, UI behavior, mandatory fields, workflow transitions, and closure status updates. Perform Functional, Regression, Smoke, Sanity, and End-to-End testing; track defects, retest fixes, and support release validation.</p></div>
+    </div>
+    <div class="timeline">
+      <div class="date">Jul 2024 &mdash; Jul 2026</div>
+      <div><h3>Software Tester &middot; Keel Info Solutions</h3><p>Performed software testing for enterprise web and mobile applications across HRMS and other business workflows. Prepared and executed test cases, performed Functional, Regression, Smoke, Sanity, Integration, and UAT testing, reported defects, verified fixes, and supported Agile sprint testing.</p></div>
+    </div>
+    <div class="timeline">
+      <div class="date">Current project</div>
+      <div><h3>ERP/CRM &mdash; Windows Closure Application</h3><p>Work on manual testing and Playwright automation integrated with Claude using MCP. Cover business workflows, data validation, UI behavior, mandatory fields, workflow transitions, closure status, defect retesting, and release validation.</p></div>
+    </div>
+    <div class="timeline">
+      <div class="date">Other projects</div>
+      <div><h3>Enterprise HRMS &middot; Spot My Team &middot; Story Buzz &middot; Cafe in Touch</h3><p>HRMS: Employee, Payroll, Attendance, and Leave Management, tested manually. Spot My Team: employee tracking, attendance, and GPS location. Story Buzz: content management and publishing for a US client. Cafe in Touch: order management and billing.</p></div>
+    </div>
+  </div>
+</section>
 
-    <section class="section alt" id="education">
-      <div class="section-inner">
-        <div class="section-kicker">Learning & credentials</div>
-        <h2>Education & certifications</h2>
-        <div class="timeline">
-          <div class="date">2019 â€” 2022</div>
-          <div><h3>Bachelor of Computer Applications (BCA)</h3><p>The American College</p></div>
-        </div>
-        <div class="timeline">
-          <div class="date">2022 â€” 2023</div>
-          <div><h3>Software Testing Course</h3><p>QSpiders Institution</p></div>
-        </div>
-        <div class="timeline">
-          <div class="date">2018 â€” 2019</div>
-          <div><h3>HSC</h3><p>Andrews Matric Hr Sec School</p></div>
-        </div>
-        <div class="timeline">
-          <div class="date">Certifications</div>
-          <div><h3>Software Testing â€” QSpiders</h3><p>NPTEL in Software Testing</p></div>
-        </div>
-      </div>
-    </section>
+<section class="section alt" id="education">
+  <div class="section-inner">
+    <div class="section-kicker">Learning &amp; credentials</div>
+    <h2>Education &amp; certifications</h2>
+    <div class="timeline"><div class="date">2019 &mdash; 2022</div><div><h3>Bachelor of Computer Applications (BCA)</h3><p>The American College</p></div></div>
+    <div class="timeline"><div class="date">2022 &mdash; 2023</div><div><h3>Software Testing Course</h3><p>QSpiders Institution</p></div></div>
+    <div class="timeline"><div class="date">2018 &mdash; 2019</div><div><h3>HSC</h3><p>Andrews Matric Hr Sec School</p></div></div>
+    <div class="timeline"><div class="date">Certifications</div><div><h3>Software Testing &mdash; QSpiders</h3><p>NPTEL in Software Testing</p></div></div>
+  </div>
+</section>
 
-    <section class="section alt" id="contact">
-      <div class="section-inner">
-        <div class="contact-box">
-          <div><div class="section-kicker" style="color:#bce5d9">Let's talk</div><h2>Have a quality challenge in mind?</h2><p>Chennai, Tamil Nadu Â· <a href="tel:+917397080763">7397080763</a> Â· <a href="mailto:newton.a.job@gmail.com">newton.a.job@gmail.com</a></p><p><a href="https://www.linkedin.com/in/a-newton712" target="_blank" rel="noopener noreferrer">Connect with me on LinkedIn â†—</a></p></div>
-          <a class="btn" href="mailto:newton.a.job@gmail.com" id="emailLink">Email me â†—</a>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer><span>Â© <span id="year"></span> Newton A Â· Software Test Engineer</span><span>Made with care and a quality-first mindset.</span></footer>
-</div>
+<section class="section alt" id="contact">
+  <div class="section-inner">
+    <div class="contact-box">
+      <div><div class="section-kicker" style="color:#bce5d9">Let's talk</div><h2>Have a quality challenge in mind?</h2><p>Chennai, Tamil Nadu &middot; <a href="tel:+917397080763">7397080763</a> &middot; <a href="mailto:newton.a.job@gmail.com">newton.a.job@gmail.com</a></p><p><a href="https://www.linkedin.com/in/a-newton712" target="_blank" rel="noopener noreferrer">Connect with me on LinkedIn &#8599;</a></p></div>
+      <a class="btn" href="mailto:newton.a.job@gmail.com">Email me &#8599;</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><span>&copy; <span id="year"></span> Newton A &middot; Software Test Engineer</span><span>Made with care and a quality-first mindset.</span></footer>
 <script>
 document.getElementById("year").textContent = new Date().getFullYear();
-// Contact links use the phone number and email listed in the CV.
 </script>
 </body>
 </html>
